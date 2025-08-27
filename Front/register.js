@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const API_URL = 'http://localhost:3000/register';
+    const API_URL = 'https://mgplannerplay.onrender.com/register';
 
     const registerForm = document.getElementById('register-form');
     const usernameInput = document.getElementById('username');

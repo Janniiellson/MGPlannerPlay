@@ -6,7 +6,7 @@ if (sessionStorage.getItem('loggedIn') !== 'true' && localStorage.getItem('plann
 }
 
 const token = localStorage.getItem('planner_token');
-const API_URL = 'http://localhost:3000/tasks';
+const API_URL = 'https://mgplannerplay.onrender.com/tasks';
 const headers = {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${token}`
