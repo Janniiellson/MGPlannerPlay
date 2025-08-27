@@ -1,0 +1,572 @@
+/* Importando uma fonte pixelada para a vibe retrô */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+/* --- Reset Básico e Configurações Globais --- */
+body {
+    font-family: 'VT323', monospace; /* Fonte pixelada */
+    background-color: #010101; /* Fundo preto */
+    color: #E0E0E0; /* Texto principal quase branco */
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 0;
+    padding: 20px;
+    /* Faz com que as imagens e fontes não fiquem borradas ao escalar */
+    image-rendering: pixelated; 
+}
+
+/* --- Efeito de "Janela" do Windows --- */
+.window {
+    background-color: #2e2e2e; /* Cinza escuro para o fundo das janelas */
+    border-top: 2px solid #5a5a5a;
+    border-left: 2px solid #5a5a5a;
+    border-right: 2px solid #111111;
+    border-bottom: 2px solid #111111;
+    padding: 3px;
+    margin-bottom: 20px;
+}
+
+.window-title-bar {
+    background-color: #000080; /* Azul clássico de título */
+    color: white;
+    padding: 4px 8px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.window-content {
+    padding: 15px;
+}
+
+/* --- Aplicando o estilo de Janela aos Elementos Principais --- */
+main {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+header, main > section {
+    background-color: #2e2e2e;
+    border-top: 2px solid #5a5a5a;
+    border-left: 2px solid #5a5a5a;
+    border-right: 2px solid #111111;
+    border-bottom: 2px solid #111111;
+    padding: 3px;
+    margin-bottom: 20px;
+}
+
+header {
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+section h2 {
+    background-color: #000080;
+    color: white;
+    padding: 4px 8px;
+    margin: -3px -3px 15px -3px; /* Ajuste para preencher a "janela" */
+}
+
+/* --- Formulários e Botões --- */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input[type="text"], input[type="password"], textarea {
+    background-color: #1a1a1a;
+    color: #E0E0E0;
+    border-top: 2px solid #111;
+    border-left: 2px solid #111;
+    border-right: 2px solid #5a5a5a;
+    border-bottom: 2px solid #5a5a5a;
+    padding: 8px;
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+}
+
+input[type="text"]::placeholder, textarea::placeholder {
+    color: #888;
+}
+
+button, #toggle-completed-btn {
+    background-color: #c0c0c0; /* Cinza clássico dos botões */
+    color: #010101;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #555555;
+    border-bottom: 2px solid #555555;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+}
+
+button:active, #toggle-completed-btn:active {
+    /* Efeito de botão pressionado (borda invertida) */
+    border-top: 2px solid #555555;
+    border-left: 2px solid #555555;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+}
+
+/* --- Lista de Tarefas --- */
+.task-category h3 {
+    border-bottom: 2px solid #5a5a5a;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    color: #3498db; /* Um azul para destacar a categoria */
+}
+
+.task-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px 5px;
+    border-bottom: 1px dashed #5a5a5a;
+}
+.task-item:last-child { border-bottom: none; }
+
+.task-item.completed {
+    color: #777;
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+/* --- Checkbox Estilizado --- */
+.task-item input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #1a1a1a;
+    border-top: 2px solid #111;
+    border-left: 2px solid #111;
+    border-right: 2px solid #5a5a5a;
+    border-bottom: 2px solid #5a5a5a;
+    margin-right: 15px;
+    margin-top: 4px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.task-item input[type="checkbox"]:checked::after {
+    content: 'X';
+    color: #E0E0E0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+}
+
+.task-item .content {
+    flex-grow: 1;
+}
+
+.task-item .content strong {
+    font-size: 1.2rem;
+}
+
+.task-item .content p {
+    margin: 4px 0 0 0;
+    color: #aaa;
+}
+
+.task-item.completed .content p {
+    color: #666;
+}
+
+/* --- Ícones para os Botões de Ação --- */
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.actions button {
+    background-color: transparent;
+    border: none;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px 20px;
+}
+
+.edit-btn {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NEZFRUNEMjcxRjg2MTFFNEE5RjNCOEQ2N0Q4RDBEN0UiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NEZFRUNEMjgxRjg2MTFFNEE5RjNCOEQ2N0Q4RDBEN0UiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo0RkVFQ0QyNTFGODYxMUU0QTlGM0I4RDY3RDhEMEQ3RSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo0RkVFQ0QyNjFGODYxMUU0QTlGM0I4RDY3RDhEMEQ3RSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Ps63f8EAAACDSURBVHjaYvz//z8DMYAFiP8y0AABxAxI/g/E/wTif8b+B+K/A/F/IfgAEGeA+D8Q/4F4PxBbQJwPiP8D8T8g3oLEbUB8H4n/A/E/IP4HxL+B+A8aLCAwAPEXIP4KxP8B8T8Q/xFQXID4DxD/A+JfQHwMxoEBAAEGADsVbQR0L2uXAAAAAElFTkSuQmCC');
+}
+
+.delete-btn {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6M0M2RDNGMkExRjg3MTFFNEEyRkRFNzVENUJDRjJDNDQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6M0M2RDNGMkIxRjg3MTFFNEEyRkRFNzVENUJDRjJDNDQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDozQzZEM0YyODFGODcxMUU0QTJGREU3NUQ1QkNGMkM0NCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozQzZEM0YyOTFGODcxMUU0QTJGREU3NUQ1QkNGMkM0NCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pg+UeJ4AAAB8SURBVHjaYmJgYPgPZLAw4A/Ez4D4HzE+/B+IbAARHyBuB+J/QPwTxf8A8T8Q/wPi/0D8H4ivAnE/ENcD8V8h/g/E/wTif0L8L4h/B+L/QNwXyF4g7gLE/wLxfyL+DxD/BeI/QPwniP8L4n9A/J8IuQAEGACiSAzyWk1T0QAAAABJRU5ErkJggg==');
+}
+
+/* --- Modal de Edição --- */
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #2e2e2e;
+    border-top: 2px solid #5a5a5a;
+    border-left: 2px solid #5a5a5a;
+    border-right: 2px solid #111111;
+    border-bottom: 2px solid #111111;
+    padding: 3px;
+    width: 90%;
+    max-width: 500px;
+}
+
+.modal-content h3 {
+    background-color: #000080;
+    color: white;
+    padding: 4px 8px;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-content form {
+    padding: 15px;
+}
+
+.modal-content label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.close-btn {
+    cursor: pointer;
+    background: #c0c0c0;
+    color: #010101;
+    font-family: sans-serif;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+    line-height: 18px;
+    text-align: center;
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #555555;
+    border-bottom: 1px solid #555555;
+}
+
+.close-btn:active {
+    border-top: 1px solid #555555;
+    border-left: 1px solid #555555;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+}
+
+/* --- Classe Utilitária --- */
+.hidden {
+    display: none !important;
+}
+
+/* --- Estilos da Tela de Login --- */
+#login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ocupa a altura inteira da tela */
+    padding: 0;
+    margin: 0;
+}
+
+#login-window {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 0; /* Remove a margem padrão das janelas */
+}
+
+#login-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#login-form input {
+    width: calc(100% - 20px); /* Ajuste para o padding */
+    margin-bottom: 15px;
+}
+
+#error-message {
+    color: #e74c3c; /* Vermelho para erro */
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* --- Estilos do Formulário de Nova Área de Trabalho --- */
+#add-workspace-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* --- Estilos da Tela de Áreas de Trabalho --- */
+#workspace-list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.workspace-item {
+    background-color: #c0c0c0;
+    color: #010101;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #555555;
+    border-bottom: 2px solid #555555;
+    padding: 20px;
+    font-size: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.1s ease-in;
+}
+
+.workspace-item:active {
+    border-top: 2px solid #555555;
+    border-left: 2px solid #555555;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    background-color: #b0b0b0;
+}
+
+.controls-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #2e2e2e;
+    padding: 10px;
+    border-top: 2px solid #5a5a5a;
+    border-left: 2px solid #5a5a5a;
+    border-right: 2px solid #111111;
+    border-bottom: 2px solid #111111;
+}
+
+.controls-bar h2 {
+    color: #E0E0E0;
+    margin: 0;
+}
+
+/* --- Estilo para o Botão de Adicionar Área de Trabalho --- */
+.workspace-item--add {
+    background-color: #444; /* Um fundo um pouco diferente */
+    border-style: dashed;   /* Borda pontilhada para indicar "novo" */
+    color: #E0E0E0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.workspace-item--add span {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+/* --- Estilos para o Prazo (Due Date) --- */
+
+/* Estilo para o campo de data, igual aos outros inputs */
+input[type="date"] {
+    background-color: #1a1a1a;
+    color: #E0E0E0;
+    border-top: 2px solid #111;
+    border-left: 2px solid #111;
+    border-right: 2px solid #5a5a5a;
+    border-bottom: 2px solid #5a5a5a;
+    padding: 8px;
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    color-scheme: dark; /* Garante que o calendário do seletor de data fique no tema escuro */
+}
+
+/* Estilo para a exibição do prazo na lista de tarefas */
+.task-item .due-date {
+    font-size: 0.9rem;
+    color: #f39c12; /* Um laranja/amarelo para destacar */
+    margin-top: 5px;
+    padding-left: 35px; /* Alinha com o texto da descrição */
+}
+
+/* --- Estilos para a Prioridade --- */
+
+/* Estilo para o campo de seleção, igual aos outros inputs */
+select {
+    background-color: #1a1a1a;
+    color: #E0E0E0;
+    border-top: 2px solid #111;
+    border-left: 2px solid #111;
+    border-right: 2px solid #5a5a5a;
+    border-bottom: 2px solid #5a5a5a;
+    padding: 8px;
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+}
+
+/* Indicador de Prioridade (a "etiqueta" vertical) */
+.task-item .priority-indicator {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 6px;
+    height: 100%;
+    background-color: transparent; /* Cor padrão */
+}
+
+/* Adiciona um espaçamento à esquerda no item da tarefa para dar espaço ao indicador */
+.task-item {
+    position: relative; /* Necessário para o posicionamento do indicador */
+    padding-left: 15px;
+}
+
+/* Cores das Prioridades */
+.priority-baixa .priority-indicator {
+    background-color: #27ae60; /* Verde */
+}
+.priority-media .priority-indicator {
+    background-color: #f1c40f; /* Amarelo */
+}
+.priority-alta .priority-indicator {
+    background-color: #e74c3c; /* Vermelho */
+}
+
+/* --- Animações --- */
+
+/* Keyframes para Fade-in e Slide-in */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Keyframes para Fade-out e Slide-out */
+@keyframes fadeOutSlideOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+        height: var(--item-height, 50px); /* Usaremos JS para pegar a altura real */
+        margin-bottom: 10px; /* Margem original */
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100px); /* Desliza para a direita ao sumir */
+        height: 0; /* Colapsa o item */
+        margin-bottom: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+
+
+/* Aplicação das animações */
+
+/* Animação para itens de Workspace e Tarefas ao aparecerem */
+.workspace-item,
+.task-item {
+    animation: slideInUp 0.3s ease-out; /* Animação ao ser renderizado */
+    /* Adicione uma transição para propriedades como background e box-shadow para hover */
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+/* Estilo para quando um item de tarefa está "desaparecendo" (removido ou movido) */
+.task-item.removing {
+    overflow: hidden; /* Garante que o conteúdo não vaze ao colapsar */
+    animation: fadeOutSlideOut 0.4s ease-out forwards; /* 'forwards' mantém o estado final */
+}
+
+/* Transição para a checkbox */
+.task-item input[type="checkbox"] {
+    transition: transform 0.2s ease-out;
+}
+.task-item input[type="checkbox"]:checked {
+    transform: scale(1.1); /* Um pequeno "pop" ao marcar */
+}
+/* --- Estilos para os Passos (Subtarefas) --- */
+.steps-container {
+    margin-top: 10px;
+    padding-left: 20px; /* Recuo para aninhar */
+    border-left: 2px solid #5a5a5a;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.step-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.step-item input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.1);
+}
+
+.step-item label {
+    flex-grow: 1;
+    cursor: pointer;
+}
+
+.step-item.completed label {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.add-step-form {
+    display: flex;
+    gap: 10px;
+    margin-left: 30px; /* Alinha com o texto dos passos */
+    margin-top: 10px;
+}
+
+.add-step-form input {
+    flex-grow: 1;
+    padding: 4px 6px; /* Um pouco menor */
+    font-size: 0.9rem;
+}
+
+.add-step-form button {
+    padding: 4px 8px;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}

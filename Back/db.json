@@ -1,0 +1,43 @@
+{
+  "users": [
+    {
+      "id": 1756309907410,
+      "username": "Janielson",
+      "passwordHash": "$2b$10$9hbpW0ADNk3k88T1RefupemBGPDFxuu4UDiAAYSXgeY6gedFrFezi"
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1756311495790,
+      "title": "Criar Planner",
+      "description": "",
+      "dueDate": "2025-08-28",
+      "priority": "alta",
+      "category": "Consultório",
+      "completed": false,
+      "steps": [
+        {
+          "id": 1756311504273,
+          "text": "criar",
+          "completed": true
+        },
+        {
+          "id": 1756311511780,
+          "text": "editar",
+          "completed": false
+        },
+        {
+          "id": 1756311516779,
+          "text": "corrigir",
+          "completed": false
+        },
+        {
+          "id": 1756311524623,
+          "text": "asdasbflaw ebrawesfpawgfbasdfbasfpasdbçfbasçfbçaeb",
+          "completed": false
+        }
+      ],
+      "userId": 1756309907410
+    }
+  ]
+}

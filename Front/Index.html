@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Planner Digital</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+    <header>
+        <h1>Meu Planner Digital</h1>
+        <button id="logout-btn">Sair</button>
+    </header>
+    <main>
+        <div id="workspaces-view">
+            <section class="window">
+                <div class="window-title-bar">
+                    <h2>Minhas Áreas de Trabalho</h2>
+                </div>
+                <div class="window-content" id="workspace-list-container">
+                    </div>
+            </section>
+        </div>
+
+        <div id="tasks-view" class="hidden">
+            <div class="controls-bar">
+                <button id="back-to-workspaces-btn">&larr; Voltar</button>
+                <h2 id="current-workspace-title"></h2>
+                <button id="toggle-completed-btn">Mostrar Concluídas</button>
+            </div>
+
+            <section class="window">
+                 <div class="window-title-bar">
+                    <h3>Adicionar Nova Tarefa</h3>
+                </div>
+                <div class="window-content">
+                    <form id="task-form">
+                        <input type="text" id="task-title-input" placeholder="Título da tarefa" required>
+                        <textarea id="task-desc-input" placeholder="Descrição (opcional)"></textarea>
+                        <input type="date" id="task-duedate-input">
+                        <select id="task-priority-input">
+                            <option value="">Sem Prioridade</option>
+                            <option value="baixa">Baixa</option>
+                            <option value="media">Média</option>
+                            <option value="alta">Alta</option>
+                        </select>
+                        <button type="submit">Adicionar Tarefa</button>
+                    </form>
+                </div>
+            </section>
+
+            <section class="window">
+                 <div class="window-title-bar">
+                    <h3>Tarefas Pendentes</h3>
+                </div>
+                <div id="task-list" class="window-content"></div>
+            </section>
+
+            <section id="completed-tasks-container" class="window hidden">
+                 <div class="window-title-bar">
+                    <h3>Tarefas Concluídas</h3>
+                </div>
+                <div id="completed-task-list" class="window-content"></div>
+            </section>
+        </div>
+    </main>
+
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <h3>
+                <span>Editar Tarefa</span>
+                <span class="close-btn">&times;</span>
+            </h3>
+            <form id="edit-form">
+                <input type="hidden" id="edit-task-id">
+                <label for="edit-task-title">Título:</label>
+                <input type="text" id="edit-task-title" required>
+                <label for="edit-task-desc">Descrição:</label>
+                <textarea id="edit-task-desc"></textarea>
+                <label for="edit-task-duedate">Prazo:</label>
+                <input type="date" id="edit-task-duedate">
+                 <label for="edit-task-priority">Prioridade:</label>
+                <select id="edit-task-priority">
+                    <option value="">Sem Prioridade</option>
+                    <option value="baixa">Baixa</option>
+                    <option value="media">Média</option>
+                    <option value="alta">Alta</option>
+                </select>
+                <label for="edit-task-category">Categoria:</label>
+                <input type="text" id="edit-task-category" required>
+                <button type="submit">Salvar Alterações</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

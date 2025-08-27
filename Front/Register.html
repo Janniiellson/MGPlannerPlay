@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Meu Planner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main id="login-container">
+        <div class="window" id="login-window">
+            <div class="window-title-bar">
+                <span>Criar Nova Conta</span>
+            </div>
+            <div class="window-content">
+                <form id="register-form">
+                    <label for="username">Novo Usuário:</label>
+                    <input type="text" id="username" required>
+                    
+                    <label for="password">Senha:</label>
+                    <input type="password" id="password" required>
+                    
+                    <button type="submit">Cadastrar</button>
+                </form>
+                <p id="error-message" class="hidden"></p>
+                <p id="success-message" class="hidden"></p>
+                <a href="login.html" class="back-link">Já tem uma conta? Faça o login</a>
+            </div>
+        </div>
+    </main>
+    <script src="register.js"></script>
+</body>
+</html>
